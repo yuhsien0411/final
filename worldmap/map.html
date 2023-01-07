@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>covid map</title>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+
+        <link href="./demo.css" rel="stylesheet" />
+        <link href="./dist/svgMap.css" rel="stylesheet" />
+        <script src="./dist/svgMap.js"></script>
+    </head>
+
+    <body>
+        <div class="demo-wrapper">
+
+            <div class="demo-container">
+                <h2>covid death</h2>
+
+                <div id="svgMapcovid"></div>
+                <script src="./data/covid.js"></script>
+                <script>
+                    new svgMap({
+                            targetElementID: 'svgMapcovid',
+                            data: svgMapDatacovid,
+                            // flagType: 'emoji',
+                            mouseWheelZoomEnabled: true,
+                            mouseWheelZoomWithKey: true,
+                            showContinentSelector: true
+
+                        });
+                </script>
+                <center>
+                    <div>
+                        <div>截止日2022/12/19</div>
+                        <div>資料來源:<a href="https://covid19.who.int/" target="_blank">世界衛生組織</a></div>
+                    </div>
+                </center>
+            </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+  title: {
+    text: '台灣累積染疫及死亡',
+    subtext: '衛福部資料'
+  },
+  tooltip: {
+    trigger: 'axis'
+  },
+  legend: {
+        data: ['Infected', 'death']
+  },
+  toolbox: {
+    show: true,
+    feature: {
+      dataView: { show: true, readOnly: false },
+      magicType: { show: true, type: ['line', 'bar'] },
+      restore: { show: true },
+      saveAsImage: { show: true }
+    }
+  },
+  calculable: true,
+  xAxis: [
+    {
+      type: 'category',
+      // prettier-ignore
+      data: ['202201','202202','202203','202204','202205','202206','202207','202208','202209','202210','202211','202212','202213','202214','202215','202216','202217','202218','202219','202220','202221','202222','202223','202224','202225','202226','202227','202228','202229','202230','202231','202232','202233','202234','202235','202236','202237','202238','202239','202240','202241','202242','202243','202244','202245','202246','202247','202248','202249','202250','202251','202252','202301']
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value'
+    }
+  ],
+  series: [
+    {
+      name: 'Infected',
+      type: 'bar',
+      data: [
+      '305','780','1262','1674','2076','2483','2928','3341','3758','4210','4820','5649','7413','10699','18400','42709','127092','361261','773675','1320729','1881923','2392596','2878144','3280311','3597709','3854526','4065827','4248391','4414118','4571665','4722211','4872128','5026667','5205131','5426621','5666113','5954315','6233848','6531500','6855424','7167564','7433739','7673564','7870963','8017587','8146166','8250829','8352361','8453332','8561205','8682545','8855596','8855596'
+      ],
+      markPoint: {
+        data: [
+          { type: 'max', name: 'Max' },
+          { type: 'min', name: 'Min' }
+        ]
+      },
+      markLine: {
+        data: [{ type: 'average', name: 'Avg' }]
+      }
+    },
+    {
+      name: 'death',
+      type: 'bar',
+      data: [
+      '0','0','1','2','2','2','2','2','2','2','2','2','3','6','18','36','121','417','992','1961','3115','4325','5402','6234','6950','7454','7849','8183','8461','8686','8877','9027','9193','9401','9651','9955','10322','10687','11088','11560','12006','12444','12859','13184','13455','13655','13842','13987','14135','14280','14380','14402','14402','14402'
+       ],
+      markPoint: {
+        data: [
+          { type: 'max', name: 'Max' },
+          { type: 'min', name: 'Min' }
+        ]
+      },
+      markLine: {
+        data: [{ type: 'average', name: 'Avg' }]
+      }
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
